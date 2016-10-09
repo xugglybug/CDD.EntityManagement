@@ -1,0 +1,134 @@
+﻿@model MVC.ViewModels.EntityMatterData
+<h2>Index</h2>
+
+@{
+    ViewBag.Title = "EntityMatterData";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Entities.Single().ID)
+        </th>        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => ((MVC.Models.cIndividual)model.Entities.Single()).Firstname)
+        </th>
+        <th>Matters</th>
+        <th></th>
+    </tr>
+
+
+@foreach (var item in Model.Entities)
+{
+    string selectedRow = "";
+    if (item.ID == Model.EntityID)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ((MVC.Models.cIndividual)item).Firstname)
+        </td>
+        <td>
+            @{
+
+                    foreach (var matter in item.Matters)
+                    {
+                        @matter.ID <br />
+                    }
+                
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Select", "Index", new { id = item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<h3>Matter for selected Entity</h3>
+
+@if (Model.Matters != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Matters.Single().ID)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Office)</th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Team)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Matters)
+        {
+            string selectedRow = "";
+            if (item.ID == ViewBag.MatterID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => @item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Office.OfficeDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team)
+                </td>
+                <td>
+                    @Html.ActionLink("Select", "Index", new { courseID = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

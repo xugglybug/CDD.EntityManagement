@@ -1,0 +1,140 @@
+﻿@model PagedList.IPagedList<MVC.Models.cIndividual>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Search", "cIndividual", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table table-hover table-condensed">
+    <tr class="info">
+        <th>
+            Title
+        <th>
+            @Html.ActionLink("Surname", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Middle Name
+        </th>
+        <th>
+            Previous Name
+        </th>
+        <th>
+            @Html.ActionLink("Date Of Birth", "Search", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+
+        </th>
+        <th>
+            Place Of Birth
+        </th>
+        <th>
+            Nationality
+        </th>
+        <th>
+            Country Of Residence
+        </th>
+        <th>
+            Address 1
+        </th>
+        <th>
+            Address 2
+        </th>
+        <th>
+            Address 3
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="rowResult" class="row" ondblclick="edit(@item.ID);">
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Middlename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Previousname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryOfResidence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address3)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+<br/>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Search",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+@section scripts {
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        @*$('.row').dblclick(function () {
+            alert('selected');
+            //window.location.href = "http://stackoverflow.com";
+            window.location = '@Url.Action( "Edit", "cIndividual" )'
+                     + '/2'
+        });*@
+
+    })
+
+        function edit (id)
+        {
+            window.location = '@Url.Action( "Edit", "cIndividual" )' + '/' + id;
+        }
+</script>
+}

@@ -1,0 +1,3 @@
+﻿Add an entity
+Check that field names 
+Test that correct formatting of fields is adhered to

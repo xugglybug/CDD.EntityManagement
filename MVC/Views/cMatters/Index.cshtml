@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MVC.Models.cMatter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Office.OfficeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponsiblePartner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatterManager)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sec_PA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Advice_Provided_Without_CDD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Office.OfficeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponsiblePartner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatterManager)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sec_PA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Advice_Provided_Without_CDD)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

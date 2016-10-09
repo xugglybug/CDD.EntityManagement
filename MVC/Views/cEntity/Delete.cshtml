@@ -1,0 +1,72 @@
+﻿@model MVC.Models.cEntity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_TelNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_TelNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceSignOff_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceSignOff_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceSignOff_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceSignOff_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

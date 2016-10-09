@@ -1,0 +1,66 @@
+﻿@model MVC.Models.cEntity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_TelNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_TelNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDContact_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDContact_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceSignOff_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceSignOff_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceSignOff_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceSignOff_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

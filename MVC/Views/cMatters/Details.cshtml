@@ -1,0 +1,74 @@
+﻿@model MVC.Models.cMatter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cMatter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Office.OfficeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Office.OfficeCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsiblePartner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsiblePartner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatterManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatterManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sec_PA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sec_PA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Advice_Provided_Without_CDD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Advice_Provided_Without_CDD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

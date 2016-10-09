@@ -1,0 +1,94 @@
+﻿
+When creating the MVC Project, we needed to leave Authentication as SQL Auth - otherwise we lost reference to EntityFramework
+
+Using Code first, for each model we need to define the key field. Use System.ComponentModel.DataAnnotations and the [Key] attribute
+
+If in debugging, the browser opens only to show an error page, because of an endless redirection loop - look at the project properties
+ - Highlight the Project and click F4
+ - I set Anonymous Authentication to Enabled and Windows Authentication to Disabled
+
+ NAVIGATION PROPERTIES:
+ Navigation properties hold reference to entities that are related to our primary entity
+ EG: [Individuals] have a reference to multiple [Matters]
+ Navigation properties are typically defined as virtual so that they can take advantage of certain Entity Framework functionality such as lazy loading
+ If a navigation property can hold multiple entities (as in many-to-many or one-to-many relationships), its type must be a list in which entries can be added, deleted, and updated, such as ICollection.
+
+
+ For each model, try and make the key column - ID
+
+ In Entity Framework terminology, an entity set typically corresponds to a database table, and an entity corresponds to a row in the table
+
+
+ http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
+
+ MTM Tables
+ 
+ If an MTM join table contains additional information (payload) other than the joins / foreign keys - then we need to define it as a model
+ If a many-to-many join table is required but without a payload (or a pure join table) in the database, we wouldn't have to create a model class for it at all. 
+  - although a join tbale would exist in the database
+
+
+  Attributes - eg:  [Display(Name = "Matter Number")] can only get us so far
+  For some data model customisation we need to use Fluent API (!! I have no idea)
+ 
+You can also use the fluent API to specify most of the formatting, validation, and mapping rules that you can do by using attributes. 
+Some attributes such as MinimumLength can't be applied with the fluent API because MinimumLength doesn't change the schema, it only applies a client and server side validation rule
+
+Some developers prefer to use the fluent API exclusively so that they can keep their entity classes "clean." 
+You can mix attributes and fluent API if you want, and there are a few customizations that can only be done by using fluent API, 
+but in general the recommended practice is to choose one of these two approaches and use that consistently as much as possible.
+
+
+
+When deling MTM's and the practiclities of showing information on the screen, we need to appreciate that
+within the related pages we are showing data from at least 2 tables
+
+Becasue of the MVC framework, we need ti create a model that combines the entities/models we wish to show
+We need to create a new View Model - in this initial case for the EntityMatter combo
+
+
+We may prefer to do database first approach as this seems more logical to the way change will occur
+ - not sure if we can move from Code First to Database First
+
+ To embed javascript into the html page that is rendered we need to add an @section scripts section
+ This section is called 'scripts' only because in _Layout.cshtml, there is a line @RenderSection("scripts", required: false)
+ @section scripts {
+    <script type="text/javascript">
+		$(document).ready(function () {
+			...
+		})
+
+		function foo (id)
+		{
+			...;
+		}
+	</script>
+}
+
+
+Code First or database first: http://programmers.stackexchange.com/questions/264379/code-first-vs-database-first
+tdd in mvc
+http://bradwilson.typepad.com/blog/2009/04/its-not-tdd-its-design-by-example.html
+https://dannorth.net/introducing-bdd/
+
+User Stories:
+As a [X] - I want [Y]  - so that [Z]
+
+Behaviour Analysis
+Given some initial context (the givens),
+When an event occurs,
+then ensure some outcomes.
+
+Given the account is in credit
+And the card is valid
+And the dispenser contains cash
+When the customer requests cash
+Then ensure the account is debited
+And ensure cash is dispensed
+And ensure the card is returned
+
+
+A best practice in MVC is not to include Entity Data Model (EDM) or any other data-access framework code inside your controller. Instead, you should use the repository pattern. The repository sits between the application and the data store. A repository separates the business logic from interactions with the underlying data base and focuses your data access in one area, making it easier to create and maintain.
+
+https://msdn.microsoft.com/en-us/library/ff847525(v=vs.100).aspx
+

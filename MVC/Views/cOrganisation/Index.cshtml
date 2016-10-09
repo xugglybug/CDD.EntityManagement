@@ -1,0 +1,173 @@
+﻿@model MVC.ViewModels.OrganisationMatterData
+<h2>Organisations</h2>
+
+@{
+    ViewBag.Title = "Organisation Index";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().registeredName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().tradingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().organisationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().keyClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organisations.Single().Address2)
+        </th>
+        <th>Matters</th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model.Organisations)
+    {
+        string selectedRow = "";
+        if (item.ID == Model.EntityID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registeredName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tradingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.organisationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.keyClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address2)
+            </td>
+            <td>
+                @{
+
+                    foreach (var matter in item.Matters)
+                    {
+                        @matter.ID <br />
+                    }
+
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+                    }
+
+</table>
+
+
+<h3>CDD for Selected Organisation</h3>
+
+@if (Model.EntityID != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Organisations.Single().CDD_Details.CDDStatus)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Organisations.Single().CDD_Details.CDDContact_Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Organisations.Single().CDD_Details.CDDContact_Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Organisations.Single().CDD_Details.ComplianceSignOff_Date)</th>
+            <th></th>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Organisations.Where(i => i.ID == Model.EntityID).Single().CDD_Details.CDDStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Organisations.Where(i => i.ID == Model.EntityID).Single().CDD_Details.CDDContact_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Organisations.Where(i => i.ID == Model.EntityID).Single().CDD_Details.CDDContact_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Organisations.Where(i => i.ID == Model.EntityID).Single().CDD_Details.ComplianceSignOff_Date)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "Index", new { cDDID = 2 })
+            </td>
+        </tr>
+
+
+    </table>
+}
+
+<h3>Related Matters for Selected Organisation</h3>
+
+@if (Model.Matters != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Matters.Single().ID)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Office)</th>
+            <th>@Html.DisplayNameFor(model => model.Matters.Single().Team)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Matters)
+        {
+            string selectedRow = "";
+            if (item.ID == ViewBag.MatterID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => @item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Office.OfficeDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team)
+                </td>
+                <td>
+                    @Html.ActionLink("Select", "Index", new { courseID = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

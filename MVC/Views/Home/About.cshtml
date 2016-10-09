@@ -1,0 +1,37 @@
+﻿@model MVC.ViewModels.EntityManagementStatsData
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Entity Management Statistics</p>
+
+<table>
+    <tr>
+        <th>
+            Number of Individuals
+        </th>
+        <th>
+            Number of Organisations
+        </th>
+        <th>
+            Number of Relationships
+        </th>
+    </tr>
+
+
+        <tr>
+            <td>
+                @Model.nIndividuals
+            </td>
+            <td>
+               @Model.nOrganisations
+            </td>
+            <td>
+                @Model.nRelationships
+            </td>
+        </tr>
+
+</table>

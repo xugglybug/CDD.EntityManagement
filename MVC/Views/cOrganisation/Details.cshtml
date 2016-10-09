@@ -1,0 +1,82 @@
+﻿@model MVC.Models.cOrganisation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cOrganisation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CDD_Details.CDDContact_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDD_Details.CDDContact_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registeredName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registeredName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tradingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tradingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.keyClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.keyClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.organisationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.organisationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

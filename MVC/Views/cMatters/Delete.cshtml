@@ -1,0 +1,80 @@
+﻿@model MVC.Models.cMatter
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cMatter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Office.OfficeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Office.OfficeCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponsiblePartner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponsiblePartner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatterManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatterManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sec_PA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sec_PA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Advice_Provided_Without_CDD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Advice_Provided_Without_CDD)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

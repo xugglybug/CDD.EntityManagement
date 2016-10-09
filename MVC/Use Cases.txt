@@ -1,0 +1,13 @@
+﻿User Stories:
+As a [X] - I want [Y]  - so that [Z]
+
+As a TOT Team member:
+
+I want to search for an individual, so that I can update their details
+ - by name
+ - 
+
+I want to see a list of individuals whose data is incomplete, so that I can check we are in the process of collecting that data
+
+
+I want to update an individual, so that their information is correct
