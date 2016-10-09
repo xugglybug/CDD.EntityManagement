@@ -194,6 +194,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\cEntity.cs" />
+    <Compile Include="Models\cEntityRelationship.cs" />
+    <Compile Include="Models\cIndividual.cs" />
+    <Compile Include="Models\cOrganisation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IIndividualRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
