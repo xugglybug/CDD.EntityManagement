@@ -1,4 +1,6 @@
 ﻿
+.. testing update
+
 When creating the MVC Project, we needed to leave Authentication as SQL Auth - otherwise we lost reference to EntityFramework
 
 Using Code first, for each model we need to define the key field. Use System.ComponentModel.DataAnnotations and the [Key] attribute
